@@ -4,12 +4,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
+import PlanetScene from './PlanetScene';
+
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
     
+    <PlanetScene />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -31,7 +35,7 @@ function App() {
         </button>
       </section>
 
-      <div className="ticks"></div>
+      <div className="ticks">    </div>
 
       <section id="next-steps">
         <div id="docs">
