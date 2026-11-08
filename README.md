@@ -1,16 +1,42 @@
-# React + Vite
+# javi-repo
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Proyecto React + Vite con confeti (`canvas-confetti`) y escena 3D (`three`).
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Captura 1
 
-## React Compiler
+![Captura 1](capturas/img1.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+confetti callendo
 
-## Expanding the Oxlint configuration
+### Captura 2
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+![Captura 2](capturas/img2.png)
+
+confeti saliendo de un boton al pulsarlo
+
+### Captura 3
+
+![Captura 3](capturas/img4.png)
+
+pagina web con fondo 3d
+
+![Captura 3](capturas/img4.1.png)
+codigo de el fondo 3d
+
+![Captura 3](capturas/img5.png)
+fusion de el boton y el fondo
+## Pregunta
+
+**Si la carpeta `node_modules/` está excluida, ¿borrar una dependencia hace alguna acción sobre el repositorio? ¿Cuál?**
+
+**Sí.** Aunque `node_modules/` esté excluida en `.gitignore`, borrar una dependencia (por ejemplo con `npm uninstall nombre-paquete`) modifica dos archivos que **sí** están versionados:
+
+- **`package.json`**: se elimina la entrada de la dependencia en `dependencies` o `devDependencies`.
+- **`package-lock.json`**: se eliminan el paquete y las dependencias transitivas que ya nadie necesita.
+
+Por eso, tras desinstalar, `git status` muestra esos dos archivos como modificados y hay que hacer `git add` y `git commit` para que el cambio quede registrado en el repositorio.
+
+La carpeta `node_modules/` en sí no genera ningún cambio en Git, porque está excluida. Si solo se borrara a mano la carpeta del paquete dentro de `node_modules/`, el repositorio no se enteraría de nada: `package.json` seguiría declarando la dependencia y cualquiera que clonara el proyecto y ejecutara `npm install` volvería a instalarla.
+
+Esto es justo lo que permite que `node_modules/` no se suba: el repositorio guarda solo la **lista** de dependencias (`package.json` y `package-lock.json`), y cada persona reconstruye la carpeta con `npm install`.
